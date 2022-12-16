@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 // import { NavLink } from 'react-router-dom';
 
-function NavBar() {
+function NavBar({ user }) {
     return (
         <>
         <Navbar className="navbar-light bg-white fixed-top" expand='lg' >
