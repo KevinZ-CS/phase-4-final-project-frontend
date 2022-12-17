@@ -21,10 +21,12 @@ function LoginForm({ onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
+          console.log('ok')
           console.log(data)
             //  onLogin(data);
             } else {
-            //  setErrors(data.errors);
+             setErrors(data.errors);
+            console.log('not ok')
             console.log(data)
             }
           }
@@ -37,7 +39,6 @@ function LoginForm({ onLogin }) {
       <div className="col-md-4"></div>
       <Form className="col-md-4" onSubmit={handleSubmit} >
 
-{/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
       <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
         <Form.Control
           type="text"
@@ -62,6 +63,8 @@ function LoginForm({ onLogin }) {
           required
         />
         </Form.Group>
+
+        <p className={errors ? "errmsg" : "offscreen"} aria-live="assertive">{errors}</p>
 
         <br />
 
