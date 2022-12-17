@@ -29,8 +29,8 @@ function GameList() {
             <div className="title text-center">
                 <h2 className="position-relative d-inline-block">All Games</h2>
             </div>
-        <Row>
-
+        <Row className="mt-4 gx-0 gy-3">
+        {gamesArray.map((game) => <GameCard key={game.id} gameData={game} /> )}
         </Row>
         </Container>
         </>
