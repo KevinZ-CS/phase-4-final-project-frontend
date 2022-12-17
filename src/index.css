@@ -32,3 +32,8 @@
     color: #000;
     text-decoration: none;
   }
+
+  .gamePageImage {
+    width: 50%;
+    height: 60vh;
+  }
