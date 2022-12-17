@@ -9,14 +9,14 @@ import SignUpForm from './SignUpForm';
 function App() {
   const [user, setUser] = useState(null);
 
-useEffect(() => {
-  fetch('/users')
-  .then((response) => {
-    if(response.ok) {
-      response.json().then((user) => setUser(user));
-    }
-  });
-}, [])
+// useEffect(() => {
+//   fetch('/users')
+//   .then((response) => {
+//     if(response.ok) {
+//       response.json().then((user) => setUser(user));
+//     }
+//   });
+// }, [])
 
   return (
     <>

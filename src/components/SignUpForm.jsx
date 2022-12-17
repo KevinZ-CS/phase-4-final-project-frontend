@@ -3,15 +3,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
 
-function SignUpForm() {
+function SignUpForm({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [password_confirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([]);
 
-    function handleSubmit(e) {
-        e.preventdefault()
-    }
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setErrors([])
+        const response = await fetch('/signup', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password, password_confirmation }),
+        })
+        const data = await response.json();
+        if (response.ok) {
+            console.log('ok')
+            console.log(data)
+            //  onLogin(data);
+            } else {
+                console.log('not ok')
+                console.log(data)
+             setErrors(data.errors);
+            }
+          }
+    
 
     return (
         <>
@@ -21,8 +40,7 @@ function SignUpForm() {
        <div className="col-md-4"></div>
        <Form className="col-md-4" onSubmit={handleSubmit} >
  
- {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
-       <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+       <Form.Group className="mb-2" controlId="exampleForm.ControlInput3">
          <Form.Control
            type="text"
            placeholder="Username"
@@ -35,7 +53,7 @@ function SignUpForm() {
        />
         </Form.Group>
  
-        <Form.Group className="mb-2" controlId="exampleForm.ControlInput2">
+        <Form.Group className="mb-2" controlId="exampleForm.ControlInput4">
           <Form.Control
            type="password"
            placeholder="Password"
@@ -47,17 +65,19 @@ function SignUpForm() {
          />
          </Form.Group>
 
-         <Form.Group className="mb-0" controlId="exampleForm.ControlInput2">
+         <Form.Group className="mb-0" controlId="exampleForm.ControlInput5">
           <Form.Control
            type="password"
            placeholder="Password Confirmation"
            className="shadow-none login-input"
            autoComplete="off"
            onChange={(e) => setPasswordConfirmation(e.target.value)}
-           value={passwordConfirmation}
+           value={password_confirmation}
            required
          />
          </Form.Group>
+
+         <p className={errors ? "errmsg" : "offscreen"} aria-live="assertive">{errors}</p>
  
          <br />
  

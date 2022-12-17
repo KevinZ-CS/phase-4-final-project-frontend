@@ -10,8 +10,9 @@ function LoginForm({ onLogin }) {
   
 
     async function handleSubmit(e) {
-        e.preventdefault();
-        const response = await fetch('login', {
+        e.preventDefault();
+        setErrors([]);
+        const response = await fetch('/login', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -20,9 +21,11 @@ function LoginForm({ onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-             onLogin(data);
+          console.log(data)
+            //  onLogin(data);
             } else {
-             setErrors(data.errors);
+            //  setErrors(data.errors);
+            console.log(data)
             }
           }
     
@@ -60,7 +63,7 @@ function LoginForm({ onLogin }) {
         />
         </Form.Group>
 
-        <hr className="mt-0" />
+        <br />
 
         <div id='login' className="text-center mb-3">
         <button className="btn btn-dark" type="submit" >Sign In</button>
