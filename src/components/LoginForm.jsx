@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Container, Row } from 'react-bootstrap';
 
 function LoginForm() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     return(
      <>
@@ -20,8 +24,8 @@ function LoginForm() {
           autoFocus
           className="shadow-none login-input"
           autoComplete="off"
-        //   onChange={(e) => setEmail(e.target.value)}
-        //   value={email}
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
           required
       />
   </Form.Group>
@@ -35,8 +39,8 @@ function LoginForm() {
           placeholder="Password"
           className="shadow-none login-input"
           autoComplete="off"
-        //   onChange={(e) => setPwd(e.target.value)}
-        //   value={pwd}
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
           required
       />
   </Form.Group>
