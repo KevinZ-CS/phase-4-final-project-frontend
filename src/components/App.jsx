@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import NavBar from './NavBar';
 import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
 
 function App() {
@@ -26,7 +27,11 @@ useEffect(() => {
       </Route>
 
       <Route exact path = '/LoginForm'>
-        <LoginForm />
+        <LoginForm onLogin={setUser} />
+      </Route>
+
+      <Route exact path = '/signup'>
+        <SignUpForm onLogin={setUser} />
       </Route>
 
     </Switch>
