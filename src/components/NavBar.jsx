@@ -17,7 +17,7 @@ function NavBar({ user }) {
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
           <Nav>
-            { user ? <Nav.Link href="/MyAccount">My Account</Nav.Link> : <Nav.Link href="/LoginForm">Login</Nav.Link> }
+            { user ? <Nav.Link href="/MyAccount">My Account</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link> }
             { user ? <Nav.Link href="/Logout">Logout</Nav.Link> : null }
           </Nav>
         </Navbar.Collapse>

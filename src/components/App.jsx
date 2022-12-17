@@ -26,7 +26,7 @@ useEffect(() => {
       <Route exact path = '/'>
       </Route>
 
-      <Route exact path = '/LoginForm'>
+      <Route exact path = '/login'>
         <LoginForm onLogin={setUser} />
       </Route>
 
