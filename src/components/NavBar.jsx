@@ -17,10 +17,8 @@ function NavBar({ user }) {
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Login</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
+            { user ? <Nav.Link href="/MyAccount">My Account</Nav.Link> : <Nav.Link href="/LoginForm">Login</Nav.Link> }
+            { user ? <Nav.Link href="/Logout">Logout</Nav.Link> : null }
           </Nav>
         </Navbar.Collapse>
       </Container>
