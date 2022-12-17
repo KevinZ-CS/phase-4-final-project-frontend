@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import GameList from './GameList';
+import GamePage from './GamePage';
 
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
 
       <Route exact path = '/signup'>
         <SignUpForm onLogin={setUser} />
+      </Route>
+
+      <Route exact path = '/game/:id'>
+       <GamePage />
       </Route>
 
     </Switch>
