@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap';
+import GameCard from "./GameCard";
 
 
 function GameList() {
+
+    const [gamesArray, setGamesArray] = useState([]);
 
 
     useEffect(() => {
@@ -12,12 +15,13 @@ function GameList() {
             const data = await response.json();
             if (response.ok) {
               console.log('ok')
-              console.log(data)
+              setGamesArray(data)
                 } 
         }
         fetchData()
     }, [])
 
+    console.log(gamesArray)
 
     return (
         <>
