@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
 
 function GameCard({ gameData }) {

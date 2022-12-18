@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Dropdown, Card } from 'react-bootstrap'
+import { Container, Card } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
+import ReviewCard from "./ReviewCard";
 
 function GamePage() {
 
