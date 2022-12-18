@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Card } from 'react-bootstrap';
-import { useParams } from "react-router-dom";
+import { Container, Card, Button } from 'react-bootstrap';
+import { NavLink, useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 
-function GamePage() {
+function GamePage({ user }) {
 
     const [errors, setErrors] = useState([]);
     const [game, setGame] = useState([])
@@ -63,6 +63,7 @@ function GamePage() {
         </Card.Text>
       </Card.Body>
     </Card>
+        {true ? <NavLink to={`/${id}/`+ `addReview`}><Button variant='dark'>Add Review</Button></NavLink> : null }
     </> 
     }
 

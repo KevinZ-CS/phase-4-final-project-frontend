@@ -6,19 +6,20 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import GameList from './GameList';
 import GamePage from './GamePage';
+import ReviewForm from './ReviewForm';
 
 
 function App() {
   const [user, setUser] = useState(null);
 
-// useEffect(() => {
-//   fetch('/users')
-//   .then((response) => {
-//     if(response.ok) {
-//       response.json().then((user) => setUser(user));
-//     }
-//   });
-// }, [])
+useEffect(() => {
+  fetch('/users')
+  .then((response) => {
+    if(response.ok) {
+      response.json().then((user) => setUser(user));
+    }
+  });
+}, [])
 
   return (
     <>
@@ -38,7 +39,11 @@ function App() {
       </Route>
 
       <Route exact path = '/game/:id'>
-       <GamePage />
+       <GamePage user={user} />
+      </Route>
+
+      <Route exact path = '/game/:id/addReview'>
+       <ReviewForm />
       </Route>
 
     </Switch>
