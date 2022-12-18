@@ -31,10 +31,12 @@ function GamePage() {
     return (
 
     <Container className='py-5 px-5 mt-4 mb-5'>
-
+       {/* <h1>Game not found</h1> Game not found */}
+    { errors.length > 0 ? 
+    <h1>{errors}</h1> : 
+    <>
     <Card className="flex-row flex-wrap rounded-0 px-4 py-4" >
     <img src = {game&&game.img_url} alt = "" className="gamePageImage"/>
-
     <Card.Body className="px-3 py-0">
     <Card.Title>{game.title}</Card.Title>
     Genre: {game.genre}
@@ -51,7 +53,7 @@ function GamePage() {
 
     {/* will need to map reviews data to ReviewCard compoent */}
 
-    {/* <Card style={{ width: '54rem' }} className='mb-2'>
+    <Card style={{ width: '54rem' }} className='mb-2'>
       <Card.Body>
         <Card.Title>Kevin</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Score: 8/10</Card.Subtitle>
@@ -60,11 +62,9 @@ function GamePage() {
           bulk of the card's content.
         </Card.Text>
       </Card.Body>
-    </Card> */}
-
- 
-
-
+    </Card>
+    </> 
+    }
 
     </Container>
 
