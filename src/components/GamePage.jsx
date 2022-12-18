@@ -49,7 +49,9 @@ function GamePage() {
         <h2 className="position-relative d-inline-block">Reviews</h2>
     </div>
 
-    <Card style={{ width: '54rem' }}>
+    {/* will need to map reviews data to ReviewCard compoent */}
+
+    {/* <Card style={{ width: '54rem' }} className='mb-2'>
       <Card.Body>
         <Card.Title>Kevin</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Score: 8/10</Card.Subtitle>
@@ -58,7 +60,10 @@ function GamePage() {
           bulk of the card's content.
         </Card.Text>
       </Card.Body>
-    </Card>
+    </Card> */}
+
+ 
+
 
 
     </Container>
