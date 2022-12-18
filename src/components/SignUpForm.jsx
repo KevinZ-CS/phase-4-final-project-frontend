@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row } from 'react-bootstrap';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function SignUpForm({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -24,6 +25,7 @@ function SignUpForm({ onLogin }) {
             console.log('ok')
             console.log(data)
              onLogin(data);
+             history.push(`/`)
             } else {
                 console.log('not ok')
                 console.log(data)

@@ -1,13 +1,17 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
-// import { NavLink } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function NavBar({ user, setUser }) {
+
+  const history = useHistory();
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        history.push(`/`);
       }
     });
   }
@@ -25,8 +29,8 @@ function NavBar({ user, setUser }) {
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
           <Nav>
-            { true ? <Nav.Link href="/MyAccount">My Account</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link> }
-            { true ? <Button variant="white" onClick={handleLogoutClick}>Logout</Button> : null }
+            { user ? <Nav.Link href="/MyAccount">My Account</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link> }
+            { user ? <Button variant="white" onClick={handleLogoutClick}>Logout</Button> : null }
             {/* { user ? <Nav.Link href="/Logout">Logout</Nav.Link> : null } */}
           </Nav>
         </Navbar.Collapse>

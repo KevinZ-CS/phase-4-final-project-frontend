@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row } from 'react-bootstrap';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+
 
 function LoginForm({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
   
 
     async function handleSubmit(e) {
@@ -24,6 +26,7 @@ function LoginForm({ onLogin }) {
           console.log('ok')
           console.log(data)
              onLogin(data);
+             history.push(`/`)
             } else {
              setErrors(data.errors);
             console.log('not ok')
