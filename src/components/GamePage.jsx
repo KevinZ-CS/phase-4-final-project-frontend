@@ -63,7 +63,7 @@ function GamePage({ user }) {
         </Card.Text>
       </Card.Body>
     </Card>
-        {true ? <NavLink to={`/${id}/`+ `addReview`}><Button variant='dark'>Add Review</Button></NavLink> : null }
+        {user ? <NavLink to={`/${id}/`+ `addReview`}><Button variant='dark'>Add Review</Button></NavLink> : null }
     </> 
     }
 

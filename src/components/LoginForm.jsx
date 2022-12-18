@@ -23,7 +23,7 @@ function LoginForm({ onLogin }) {
         if (response.ok) {
           console.log('ok')
           console.log(data)
-            //  onLogin(data);
+             onLogin(data);
             } else {
              setErrors(data.errors);
             console.log('not ok')

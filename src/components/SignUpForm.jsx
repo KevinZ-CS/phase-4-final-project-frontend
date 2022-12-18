@@ -23,7 +23,7 @@ function SignUpForm({ onLogin }) {
         if (response.ok) {
             console.log('ok')
             console.log(data)
-            //  onLogin(data);
+             onLogin(data);
             } else {
                 console.log('not ok')
                 console.log(data)

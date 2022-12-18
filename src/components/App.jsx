@@ -21,9 +21,11 @@ useEffect(() => {
   });
 }, [])
 
+console.log(user)
+
   return (
     <>
-    <NavBar user={user} />
+    <NavBar user={user} setUser={setUser} />
     <Switch>
 
       <Route exact path = '/'>
@@ -42,8 +44,8 @@ useEffect(() => {
        <GamePage user={user} />
       </Route>
 
-      <Route exact path = '/game/:id/addReview'>
-       <ReviewForm />
+      <Route exact path = '/:id/addReview'>
+       <ReviewForm user={user} />
       </Route>
 
     </Switch>
