@@ -8,6 +8,7 @@ import GameList from './GameList';
 import GamePage from './GamePage';
 import ReviewForm from './ReviewForm';
 import GameForm from './GameForm';
+import MyAccount from './MyAccount';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,6 +39,10 @@ console.log(user)
 
       <Route exact path = '/login'>
         <LoginForm onLogin={setUser} />
+      </Route>
+
+      <Route exact path = '/MyAccount'>
+        <MyAccount />
       </Route>
 
       <Route exact path = '/signup'>
