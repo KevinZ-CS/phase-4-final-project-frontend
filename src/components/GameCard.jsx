@@ -15,14 +15,6 @@ function GameCard({ gameData }) {
                     {gameData.title}
                     </NavLink>
                 </Card.Title>
-                {/* <Card.Text>
-                    Genre: {gameData.genre}
-                    <br />
-                    Platform: {gameData.platform}
-                    <br />
-                    Price: ${gameData.price}
-                </Card.Text> */}
-                {/* <Button variant="dark">Details</Button> */}
             </Card.Body>
         </Card>
         </Col>

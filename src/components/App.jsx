@@ -9,6 +9,7 @@ import GamePage from './GamePage';
 import ReviewForm from './ReviewForm';
 import GameForm from './GameForm';
 import MyAccount from './MyAccount';
+import EditReviewForm from './EditReviewForm';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,7 +43,7 @@ console.log(user)
       </Route>
 
       <Route exact path = '/MyAccount'>
-        <MyAccount />
+        <MyAccount user={user} />
       </Route>
 
       <Route exact path = '/signup'>
@@ -51,6 +52,10 @@ console.log(user)
 
       <Route exact path = '/game/:id'>
        <GamePage user={user} />
+      </Route>
+
+      <Route exact path = '/editReview/:id'>
+       <EditReviewForm />
       </Route>
 
       <Route exact path = '/:id/addReview'>
