@@ -26,7 +26,6 @@ function ReviewForm({ user }) {
                 comment: comment,
                 game_id: id,
                 user_id: user.id, 
-                username: user.username,
             }),
         })
         const data = await response.json();

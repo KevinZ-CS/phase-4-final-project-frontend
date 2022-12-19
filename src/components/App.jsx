@@ -7,7 +7,7 @@ import SignUpForm from './SignUpForm';
 import GameList from './GameList';
 import GamePage from './GamePage';
 import ReviewForm from './ReviewForm';
-
+import GameForm from './GameForm';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,7 +29,11 @@ console.log(user)
     <Switch>
 
       <Route exact path = '/'>
-        <GameList />
+        <GameList user={user} />
+      </Route>
+
+      <Route exact path = '/createGame'>
+        <GameForm />
       </Route>
 
       <Route exact path = '/login'>
