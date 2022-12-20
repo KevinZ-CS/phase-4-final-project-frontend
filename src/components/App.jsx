@@ -67,8 +67,6 @@ function handleAddGame(newGame) {
       setGameReviews(updatedReviews);
     }
 
-console.log(gameReviews)
-
 
   return (
     <>
