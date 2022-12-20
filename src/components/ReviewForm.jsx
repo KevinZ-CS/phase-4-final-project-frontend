@@ -41,9 +41,9 @@ function ReviewForm({ user }) {
             }
           }
 
-    function handleChange(e) {
-        setScore(e.target.value)
-    }
+    // function handleChange(e) {
+    //     setScore(e.target.value)
+    // }
 
 
     return (
@@ -53,7 +53,7 @@ function ReviewForm({ user }) {
        <div className="col-md-4"></div>
        <Form className="col-md-4"  onSubmit={handleSubmit}>
 
-       <Dropdown className="mb-2">
+       {/* <Dropdown className="mb-2">
       <Dropdown.Toggle variant="dark" id="dropdown-basic">
       {score ? score : `Score`}
       </Dropdown.Toggle>
@@ -71,12 +71,12 @@ function ReviewForm({ user }) {
                 <Dropdown.Item as='button' value='9' onClick={handleChange} >9</Dropdown.Item>
                 <Dropdown.Item as='button' value='10' onClick={handleChange} >10</Dropdown.Item>
             </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown> */}
  
-       {/* <Form.Group className="mb-2" controlId="exampleForm.ControlInput3">
+       <Form.Group className="mb-2" controlId="exampleForm.ControlInput3">
         <Form.Label>Score:</Form.Label>
          <Form.Control
-           type="text"
+           type="number"
            autoFocus
            className="shadow-none login-input"
            autoComplete="off"
@@ -84,7 +84,7 @@ function ReviewForm({ user }) {
            value={score}
            required
        />
-        </Form.Group> */}
+        </Form.Group>
  
         <Form.Group className="mb-2" controlId="exampleForm.ControlInput4">
           <Form.Control
