@@ -56,16 +56,16 @@ function handleAddGame(newGame) {
       setUserGamesArray(updatedUserGamesArray);
     }
 
-    // function handleUpdateReview(updatedReviewObj) {
-    //   const updatedReviews = gameReviews.map((review) => {
-    //     if (review.id === updatedReviewObj.id) {
-    //       return updatedReviewObj;
-    //     } else {
-    //       return review;
-    //     }
-    //   });
-    //   setGameReviews(updatedReviews);
-    // }
+    function handleUpdateReview(updatedReviewObj) {
+      const updatedReviews = gameReviews.map((review) => {
+        if (review.id === updatedReviewObj.id) {
+          return updatedReviewObj;
+        } else {
+          return review;
+        }
+      });
+      setGameReviews(updatedReviews);
+    }
 
 console.log(gameReviews)
 
@@ -100,7 +100,7 @@ console.log(gameReviews)
       </Route>
 
       <Route exact path = '/:game_id/editReview/:id'>
-       <EditReviewForm user={user} onLogin={setUser} handleDeleteReview={handleDeleteReview}/>
+       <EditReviewForm user={user} onLogin={setUser} handleDeleteReview={handleDeleteReview} handleUpdateReview={handleUpdateReview} />
       </Route>
 
       <Route exact path = '/:id/addReview'>

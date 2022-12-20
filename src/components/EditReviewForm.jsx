@@ -4,7 +4,7 @@ import { Form, Container, Row } from 'react-bootstrap';
 import { useParams, useHistory } from "react-router-dom";
 import LoginForm from "./LoginForm";
 
-function EditReviewForm({ user, onLogin, handleDeleteReview }) {
+function EditReviewForm({ user, onLogin, handleDeleteReview, handleUpdateReview }) {
 
     const [review, setReview] = useState('')
     const [score, setScore] = useState(0)
@@ -47,8 +47,9 @@ function EditReviewForm({ user, onLogin, handleDeleteReview }) {
         })
         const data = await response.json();
         if (response.ok) {
-            console.log(data)
+            handleUpdateReview(data)
             history.push(`/game/${data.game_id}`)
+            //push will reload the data anyway since useEffect on gamePage will be called and setting the updated data
             } else {
              setErrors(data.errors);
             }
@@ -67,11 +68,6 @@ function EditReviewForm({ user, onLogin, handleDeleteReview }) {
              setErrors(data.errors);
             }
           }
-
-
-
-
-
 
 
     return (
