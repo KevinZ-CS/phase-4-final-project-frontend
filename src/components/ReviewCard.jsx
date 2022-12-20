@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
@@ -8,7 +8,7 @@ function ReviewCard({ reviewData }) {
     <Card style={{ width: '54rem' }} className='mb-2'>
       <Card.Body>
         <Card.Title>
-        <NavLink to={'/editReview/'+reviewData.id} className='gameName' >
+        <NavLink to={`/${reviewData.game_id}/editReview/`+reviewData.id} className='gameName' >
             {reviewData.username}
         </NavLink>
         </Card.Title>

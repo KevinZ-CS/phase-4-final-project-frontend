@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row, Dropdown } from 'react-bootstrap';
-import { NavLink, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import LoginForm from "./LoginForm";
 
-function ReviewForm({ user, onLogin }) {
+function ReviewForm({ user, onLogin, handleAddReview }) {
     const [score, setScore] = useState(0);
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState([]);
     const { id } = useParams();
     const history = useHistory();
-
-    // console.log(user.username)
-    console.log(user)
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -31,21 +28,12 @@ function ReviewForm({ user, onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-            console.log('ok')
-            console.log(data)
+            handleAddReview(data)
             history.push(`/game/${id}`)
-            //  onLogin(data);
             } else {
-                console.log('not ok')
-                console.log(data)
              setErrors(data.errors);
             }
           }
-
-    // function handleChange(e) {
-    //     setScore(e.target.value)
-    // }
-
 
     return (
         <>

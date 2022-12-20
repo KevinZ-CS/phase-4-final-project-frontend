@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row } from 'react-bootstrap';
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function SignUpForm({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -22,13 +22,9 @@ function SignUpForm({ onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-            console.log('ok')
-            console.log(data)
              onLogin(data);
              history.push(`/`)
             } else {
-                console.log('not ok')
-                console.log(data)
              setErrors(data.errors);
             }
           }

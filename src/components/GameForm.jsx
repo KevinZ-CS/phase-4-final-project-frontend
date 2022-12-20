@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Container, Row, Button } from 'react-bootstrap';
-import { NavLink, useHistory } from "react-router-dom";
+import { Form, Container, Row } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 import LoginForm from "./LoginForm";
 
-function GameForm({ user, onLogin }) {
+function GameForm({ user, onLogin, handleAddGame }) {
     const [title, setTitle] = useState('');
     const [platform, setPlaform] = useState('');
     const [genre, setGenre] = useState('');
@@ -28,13 +28,9 @@ function GameForm({ user, onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-            console.log('ok')
-            console.log(data)
-            //  onLogin(data);
+            handleAddGame(data)
              history.push(`/`)
             } else {
-                console.log('not ok')
-                console.log(data)
              setErrors(data.errors);
             }
           }

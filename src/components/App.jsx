@@ -13,17 +13,62 @@ import EditReviewForm from './EditReviewForm';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [gamesArray, setGamesArray] = useState([]);
+  const [userGamesArray, setUserGamesArray] = useState([]);
+  const [gameReviews, setGameReviews] = useState([]);
 
 useEffect(() => {
   fetch('/me')
   .then((response) => {
     if(response.ok) {
-      response.json().then((user) => setUser(user));
+      response.json().then((user) => {
+        setUser(user)
+        setUserGamesArray(user.games)
+      });
     }
   });
 }, [])
 
-console.log(user)
+useEffect(() => {
+  const fetchData = async () => {
+      const response = await fetch('/games');
+      const data = await response.json();
+      if (response.ok) {
+        setGamesArray(data)
+          } 
+  }
+  fetchData()
+}, [])
+
+function handleAddGame(newGame) {
+  setGamesArray([...gameReviews, newGame]);
+    }
+
+  function handleAddReview(review) {
+  setGamesArray([...gamesArray, review]);
+    }
+
+    function handleDeleteReview(id, game_id) {
+      const updatedReviews = gameReviews.filter((review) => review.id !== parseInt(id));
+      //params will give you a string
+      const updatedUserGamesArray = userGamesArray.filter((game) => game.id !== parseInt(game_id));
+      setGameReviews(updatedReviews);
+      setUserGamesArray(updatedUserGamesArray);
+    }
+
+    // function handleUpdateReview(updatedReviewObj) {
+    //   const updatedReviews = gameReviews.map((review) => {
+    //     if (review.id === updatedReviewObj.id) {
+    //       return updatedReviewObj;
+    //     } else {
+    //       return review;
+    //     }
+    //   });
+    //   setGameReviews(updatedReviews);
+    // }
+
+console.log(gameReviews)
+
 
   return (
     <>
@@ -31,11 +76,11 @@ console.log(user)
     <Switch>
 
       <Route exact path = '/'>
-        <GameList user={user} />
+        <GameList user={user} gamesArray={gamesArray} />
       </Route>
 
       <Route exact path = '/createGame'>
-        <GameForm user={user} onLogin={setUser} />
+        <GameForm user={user} onLogin={setUser} handleAddGame={handleAddGame}/>
       </Route>
 
       <Route exact path = '/login'>
@@ -43,7 +88,7 @@ console.log(user)
       </Route>
 
       <Route exact path = '/MyAccount'>
-        <MyAccount user={user} onLogin={setUser} />
+        <MyAccount user={user} onLogin={setUser} userGamesArray={userGamesArray} />
       </Route>
 
       <Route exact path = '/signup'>
@@ -51,15 +96,15 @@ console.log(user)
       </Route>
 
       <Route exact path = '/game/:id'>
-       <GamePage user={user} />
+       <GamePage user={user} gameReviews={gameReviews} setGameReviews={setGameReviews} />
       </Route>
 
-      <Route exact path = '/editReview/:id'>
-       <EditReviewForm user={user} onLogin={setUser} />
+      <Route exact path = '/:game_id/editReview/:id'>
+       <EditReviewForm user={user} onLogin={setUser} handleDeleteReview={handleDeleteReview}/>
       </Route>
 
       <Route exact path = '/:id/addReview'>
-       <ReviewForm user={user} onLogin={setUser} />
+       <ReviewForm user={user} onLogin={setUser} handleAddReview={handleAddReview} />
       </Route>
 
     </Switch>

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Container, Row, Dropdown } from 'react-bootstrap';
-import { NavLink, useParams, useHistory } from "react-router-dom";
+import { Form, Container, Row } from 'react-bootstrap';
+import { useParams, useHistory } from "react-router-dom";
 import LoginForm from "./LoginForm";
 
-function EditReviewForm({ user, onLogin }) {
+function EditReviewForm({ user, onLogin, handleDeleteReview }) {
 
     const [review, setReview] = useState('')
     const [score, setScore] = useState(0)
     const [username, setUsername] = useState('')
     const [errors, setErrors] = useState([]);
     const history = useHistory();
-    // const [game, setGame] = useState([])
-    const { id } = useParams();
+    const { id, game_id } = useParams();
+
+
 
     useEffect(() => {
         setErrors([]);
@@ -20,13 +21,10 @@ function EditReviewForm({ user, onLogin }) {
             const response = await fetch(`/reviews/${id}`);
             const data = await response.json();
             if (response.ok) {
-              console.log('ok')
-              console.log(data)
               setUsername(data.username)
               setScore(data.score)
               setReview(data.comment)
                 } else {
-                    console.log(data.error)
                     setErrors(data.error)
                 }
         }
@@ -49,13 +47,9 @@ function EditReviewForm({ user, onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-            console.log('ok')
             console.log(data)
             history.push(`/game/${data.game_id}`)
-            //  onLogin(data);
             } else {
-                console.log('not ok')
-                console.log(data)
              setErrors(data.errors);
             }
           }
@@ -67,13 +61,9 @@ function EditReviewForm({ user, onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-            console.log('ok')
-            console.log(data)
+            handleDeleteReview(id, game_id)
             history.push(`/MyAccount`)
-            //  onLogin(data);
             } else {
-                console.log('not ok')
-                console.log(data)
              setErrors(data.errors);
             }
           }
@@ -82,7 +72,6 @@ function EditReviewForm({ user, onLogin }) {
 
 
 
-    console.log(review)
 
 
     return (

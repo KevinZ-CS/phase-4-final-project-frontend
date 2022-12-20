@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Button } from 'react-bootstrap';
 import GameCard from "./GameCard";
-import { NavLink, useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
-function GameList({ user }) {
+function GameList({ user, gamesArray }) {
 
-    const [gamesArray, setGamesArray] = useState([]);
+    // const [gamesArray, setGamesArray] = useState([]);
     const history = useHistory();
 
     function handleClick() {
@@ -15,19 +15,17 @@ function GameList({ user }) {
     }
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('/games');
-            const data = await response.json();
-            if (response.ok) {
-              console.log('ok')
-              setGamesArray(data)
-                } 
-        }
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await fetch('/games');
+    //         const data = await response.json();
+    //         if (response.ok) {
+    //           setGamesArray(data)
+    //             } 
+    //     }
+    //     fetchData()
+    // }, [])
 
-    console.log(gamesArray)
 
     return (
         <>

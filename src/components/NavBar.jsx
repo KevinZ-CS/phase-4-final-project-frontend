@@ -25,13 +25,10 @@ function NavBar({ user, setUser }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {/* <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link> */}
           </Nav>
           <Nav>
             { user ? <Nav.Link href="/MyAccount">Welcome {user.username}!</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link> }
             { user ? <Button variant="white" onClick={handleLogoutClick}>Logout</Button> : null }
-            {/* { user ? <Nav.Link href="/Logout">Logout</Nav.Link> : null } */}
           </Nav>
         </Navbar.Collapse>
       </Container>

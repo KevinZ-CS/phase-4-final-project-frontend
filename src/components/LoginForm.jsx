@@ -23,14 +23,10 @@ function LoginForm({ onLogin }) {
         })
         const data = await response.json();
         if (response.ok) {
-          console.log('ok')
-          console.log(data)
              onLogin(data);
              history.push(`/`)
             } else {
              setErrors(data.errors);
-            console.log('not ok')
-            console.log(data)
             }
           }
     

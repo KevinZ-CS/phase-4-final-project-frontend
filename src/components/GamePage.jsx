@@ -4,10 +4,10 @@ import { Container, Card, Button } from 'react-bootstrap';
 import { NavLink, useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 
-function GamePage({ user }) {
+function GamePage({ user, gameReviews, setGameReviews }) {
 
     const [errors, setErrors] = useState([]);
-    const [game, setGame] = useState([])
+    const [game, setGame] = useState([]); //holds info about the specific game
     const { id } = useParams();
 
     useEffect(() => {
@@ -16,23 +16,20 @@ function GamePage({ user }) {
             const response = await fetch(`/games/${id}`);
             const data = await response.json();
             if (response.ok) {
-              console.log('ok')
               setGame(data)
+              setGameReviews(data.reviews)
+              //data for reviews gets set here 
                 } else {
-                    console.log(data.error)
                     setErrors(data.error)
                 }
         }
         fetchData()
     }, [])
 
-    console.log(game)
-    console.log(game.reviews)
 
     return (
 
     <Container className='py-5 px-5 mt-4 mb-5'>
-       {/* <h1>Game not found</h1> Game not found */}
     { errors.length > 0 ? 
     <h1>{errors}</h1> : 
     <>
@@ -53,7 +50,7 @@ function GamePage({ user }) {
     </div>
 
  
-    {game.reviews?.map((review) => <ReviewCard  key={review.id} reviewData={review} />)}
+    {gameReviews?.map((review) => <ReviewCard  key={review.id} reviewData={review} />)}
         {/* ? asks if the array exists */}
   
         {user ? <NavLink to={`/${id}/`+ `addReview`}><Button variant='dark'>Add Review</Button></NavLink> : null }
