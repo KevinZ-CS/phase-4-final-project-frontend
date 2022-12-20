@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row, Button } from 'react-bootstrap';
 import { NavLink, useHistory } from "react-router-dom";
+import LoginForm from "./LoginForm";
 
-function GameForm() {
+function GameForm({ user, onLogin }) {
     const [title, setTitle] = useState('');
     const [platform, setPlaform] = useState('');
     const [genre, setGenre] = useState('');
@@ -41,7 +42,7 @@ function GameForm() {
 
     return (
     <Container className="successmargins">
-    <Row>
+    { user ? <Row>
        <div className="col-md-4"></div>
        <Form className="col-md-4" onSubmit={handleSubmit} >
  
@@ -116,7 +117,7 @@ function GameForm() {
  
      
          </Form>
-     </Row>
+     </Row> : <LoginForm onLogin={onLogin}/> }
 
     </Container>
     )

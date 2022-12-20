@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row, Dropdown } from 'react-bootstrap';
 import { NavLink, useParams, useHistory } from "react-router-dom";
+import LoginForm from "./LoginForm";
 
-function EditReviewForm() {
+function EditReviewForm({ user, onLogin }) {
 
     const [review, setReview] = useState('')
     const [score, setScore] = useState(0)
@@ -85,6 +86,8 @@ function EditReviewForm() {
 
 
     return (
+        <>
+        { user ?
     <Container className="successmargins">
     <Row>
        <div className="col-md-4"></div>
@@ -93,7 +96,7 @@ function EditReviewForm() {
        <Form.Group className="mb-2" controlId="exampleForm.ControlInput3">
         <Form.Label>{username}:</Form.Label>
          <Form.Control
-           type="text"
+           type="number"
            placeholder="Score"
            autoFocus
            className="shadow-none login-input"
@@ -129,7 +132,8 @@ function EditReviewForm() {
          </Form>
       </Row>
          
-    </Container>
+    </Container> : <LoginForm onLogin={onLogin} />}
+    </>
     )
 }
 

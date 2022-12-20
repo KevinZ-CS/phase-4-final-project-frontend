@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Container, Row, Dropdown } from 'react-bootstrap';
 import { NavLink, useParams, useHistory } from "react-router-dom";
+import LoginForm from "./LoginForm";
 
-function ReviewForm({ user }) {
+function ReviewForm({ user, onLogin }) {
     const [score, setScore] = useState(0);
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState([]);
@@ -48,6 +49,7 @@ function ReviewForm({ user }) {
 
     return (
         <>
+        { user ?
         <Container className="successmargins">
         <Row>
        <div className="col-md-4"></div>
@@ -110,7 +112,9 @@ function ReviewForm({ user }) {
      
          </Form>
      </Row>
-        </Container>
+        </Container> : <LoginForm onLogin={onLogin} />
+        
+        }
         </>
     )
 }

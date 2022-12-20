@@ -35,7 +35,7 @@ console.log(user)
       </Route>
 
       <Route exact path = '/createGame'>
-        <GameForm />
+        <GameForm user={user} onLogin={setUser} />
       </Route>
 
       <Route exact path = '/login'>
@@ -43,7 +43,7 @@ console.log(user)
       </Route>
 
       <Route exact path = '/MyAccount'>
-        <MyAccount user={user} />
+        <MyAccount user={user} onLogin={setUser} />
       </Route>
 
       <Route exact path = '/signup'>
@@ -55,11 +55,11 @@ console.log(user)
       </Route>
 
       <Route exact path = '/editReview/:id'>
-       <EditReviewForm />
+       <EditReviewForm user={user} onLogin={setUser} />
       </Route>
 
       <Route exact path = '/:id/addReview'>
-       <ReviewForm user={user} />
+       <ReviewForm user={user} onLogin={setUser} />
       </Route>
 
     </Switch>
