@@ -13,12 +13,10 @@ function EditReviewForm({ user, onLogin, handleDeleteReview, handleUpdateReview 
     const history = useHistory();
     const { id, game_id } = useParams();
 
-
-
     useEffect(() => {
         setErrors([]);
         const fetchData = async () => {
-            const response = await fetch(`/reviews/${id}`);
+            const response = await fetch(`/games/${game_id}/reviews/${id}`);
             const data = await response.json();
             if (response.ok) {
               setUsername(data.username)
@@ -35,7 +33,7 @@ function EditReviewForm({ user, onLogin, handleDeleteReview, handleUpdateReview 
     async function handleSubmit(e) {
         e.preventDefault();
         setErrors([])
-        const response = await fetch(`/reviews/${id}`, {
+        const response = await fetch(`/games/${game_id}/reviews/${id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -48,7 +46,7 @@ function EditReviewForm({ user, onLogin, handleDeleteReview, handleUpdateReview 
         const data = await response.json();
         if (response.ok) {
             handleUpdateReview(data)
-            history.push(`/game/${data.game_id}`)
+            history.push(`/games/${data.game_id}`)
             //push will reload the data anyway since useEffect on gamePage will be called and setting the updated data
             } else {
              setErrors(data.errors);
@@ -57,13 +55,13 @@ function EditReviewForm({ user, onLogin, handleDeleteReview, handleUpdateReview 
 
     async function handleDelete() {
         setErrors([])
-        const response = await fetch(`/reviews/${id}`, {
+        const response = await fetch(`/games/${game_id}/reviews/${id}`, {
             method: "DELETE",
         })
         const data = await response.json();
         if (response.ok) {
             handleDeleteReview(id, game_id)
-            history.push(`/MyAccount`)
+            history.push(`/me`)
             } else {
              setErrors(data.errors);
             }

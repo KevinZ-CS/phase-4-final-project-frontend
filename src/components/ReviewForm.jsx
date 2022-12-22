@@ -8,13 +8,14 @@ function ReviewForm({ user, onLogin, handleAddReview }) {
     const [score, setScore] = useState(0);
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState([]);
-    const { id } = useParams();
+    const { game_id } = useParams();
     const history = useHistory();
+
 
     async function handleSubmit(e) {
         e.preventDefault();
         setErrors([])
-        const response = await fetch('/reviews', {
+        const response = await fetch(`/games/${game_id}/reviews`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -22,14 +23,14 @@ function ReviewForm({ user, onLogin, handleAddReview }) {
             body: JSON.stringify({ 
                 score: score, 
                 comment: comment,
-                game_id: id,
+                game_id: game_id,
                 user_id: user.id, 
             }),
         })
         const data = await response.json();
         if (response.ok) {
             handleAddReview(data)
-            history.push(`/game/${id}`)
+            history.push(`/games/${game_id}`)
             } else {
              setErrors(data.errors);
             }

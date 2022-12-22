@@ -8,7 +8,7 @@ function ReviewCard({ reviewData }) {
     <Card style={{ width: '54rem' }} className='mb-2'>
       <Card.Body>
         <Card.Title>
-        <NavLink to={`/${reviewData.game_id}/editReview/`+reviewData.id} className='gameName' >
+        <NavLink to={`/games/${reviewData.game_id}/reviews/`+reviewData.id} className='gameName' >
             {reviewData.username}
         </NavLink>
         </Card.Title>

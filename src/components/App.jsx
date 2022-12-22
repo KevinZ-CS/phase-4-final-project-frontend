@@ -41,11 +41,11 @@ useEffect(() => {
 }, [])
 
 function handleAddGame(newGame) {
-  setGamesArray([...gameReviews, newGame]);
+  setGamesArray([...gamesArray, newGame]);
     }
 
   function handleAddReview(review) {
-  setGamesArray([...gamesArray, review]);
+  setGameReviews([...gameReviews, review]);
     }
 
     function handleDeleteReview(id, game_id) {
@@ -77,7 +77,7 @@ function handleAddGame(newGame) {
         <GameList user={user} gamesArray={gamesArray} />
       </Route>
 
-      <Route exact path = '/createGame'>
+      <Route exact path = '/games'>
         <GameForm user={user} onLogin={setUser} handleAddGame={handleAddGame}/>
       </Route>
 
@@ -85,7 +85,7 @@ function handleAddGame(newGame) {
         <LoginForm onLogin={setUser} />
       </Route>
 
-      <Route exact path = '/MyAccount'>
+      <Route exact path = '/me'>
         <MyAccount user={user} onLogin={setUser} userGamesArray={userGamesArray} />
       </Route>
 
@@ -93,15 +93,15 @@ function handleAddGame(newGame) {
         <SignUpForm onLogin={setUser} />
       </Route>
 
-      <Route exact path = '/game/:id'>
+      <Route exact path = '/games/:id'>
        <GamePage user={user} gameReviews={gameReviews} setGameReviews={setGameReviews} />
       </Route>
 
-      <Route exact path = '/:game_id/editReview/:id'>
+      <Route exact path = '/games/:game_id/reviews/:id'>
        <EditReviewForm user={user} onLogin={setUser} handleDeleteReview={handleDeleteReview} handleUpdateReview={handleUpdateReview} />
       </Route>
 
-      <Route exact path = '/:id/addReview'>
+      <Route exact path = '/games/:game_id/reviews'>
        <ReviewForm user={user} onLogin={setUser} handleAddReview={handleAddReview} />
       </Route>
 

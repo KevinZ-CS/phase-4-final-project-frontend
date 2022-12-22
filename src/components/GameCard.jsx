@@ -11,7 +11,7 @@ function GameCard({ gameData }) {
             <Card.Img variant="top" src={gameData.img_url} className='card-img-top' />
             <Card.Body className="text-center">
                 <Card.Title>
-                    <NavLink to={'/game/'+gameData.id} className='gameName' >
+                    <NavLink to={'/games/'+gameData.id} className='gameName' >
                     {gameData.title}
                     </NavLink>
                 </Card.Title>

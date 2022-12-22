@@ -53,10 +53,10 @@ function GamePage({ user, gameReviews, setGameReviews }) {
     {gameReviews?.map((review) => <ReviewCard  key={review.id} reviewData={review} />)}
         {/* ? asks if the array exists */}
   
-        {user ? <NavLink to={`/${id}/`+ `addReview`}><Button variant='dark'>Add Review</Button></NavLink> : null }
+        {user ? <NavLink to={`/games/${id}/`+ `reviews`}><Button variant='dark'>Add Review</Button></NavLink> : null }
     </> 
     }
-
+    
     </Container>
 
     )

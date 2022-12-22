@@ -11,7 +11,7 @@ function GameList({ user, gamesArray }) {
     const history = useHistory();
 
     function handleClick() {
-        history.push('/createGame')
+        history.push('/games')
     }
 
 

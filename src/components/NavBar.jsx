@@ -27,7 +27,7 @@ function NavBar({ user, setUser }) {
           <Nav className="me-auto">
           </Nav>
           <Nav>
-            { user ? <Nav.Link href="/MyAccount">Welcome {user.username}!</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link> }
+            { user ? <Nav.Link href="/me">Welcome {user.username}!</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link> }
             { user ? <Button variant="white" onClick={handleLogoutClick}>Logout</Button> : null }
           </Nav>
         </Navbar.Collapse>
